@@ -1,0 +1,203 @@
+/* =========================================================
+   CONFIGURACIONES GLOBALES
+   ========================================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+:root { /* VARIABLES */
+    --marg-inf: 2.5rem;
+    --b-radius: 15px;
+    --lateral: 15%;
+    --lateral-titols: 17%;
+    --txt-padding: 1rem;
+}
+section {
+    margin-bottom: var(--marg-inf);
+}
+.titol-seccio { /* ESTIL PER ALS TITOLS DELS APARTATS */
+    display: flex;
+    margin-left: var(--lateral-titols) ;
+    margin-bottom: var(--marg-inf);
+    font-size: 1.2rem;
+}
+img {
+    width: 100%;
+    display: block;
+}
+
+/* =========================================================
+   MENU PRINCIPAL
+   ========================================================= */
+.menu-principal {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.menu-principal ul {
+    display: flex;
+    background-color: white;
+    list-style: none;
+    gap: 1rem;
+    justify-content: end;
+    padding: 0.5rem 0.2rem;
+}
+.menu-principal li {
+    font-size: 1.2rem;
+}
+.menu-principal li:hover {
+    text-decoration: underline;
+}
+.menu-principal li a {
+  color: inherit;
+  text-decoration: none;
+}
+/* =========================================================
+   BOTÓN RESERVAR
+   ========================================================= */
+.boton-reservar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 0.4rem;
+    border-radius: var(--b-radius);
+    border: 3px solid;
+    z-index: 2;
+}
+/* =========================================================
+   HERO / CABECERA
+   ========================================================= */
+.hero {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.hero img {
+    max-height: 96vh;
+}
+
+.hero-text {
+    position: absolute;
+    left: 4rem;
+}
+.hero-text h1 {
+    font-size: 3rem;
+}
+.hero-text p {
+    font-size: 1.2rem;
+}
+
+/* =========================================================
+   SOBRE NOSOTROS
+   ========================================================= */
+.contenidor-nosaltres {
+    margin-left: var(--lateral);
+    margin-right: var(--lateral); 
+}
+.contingut-nosaltres {
+    display: flex;
+    gap: 3rem;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    
+}
+.contingut-nosaltres img {
+    width: calc(30% - 3rem);
+}
+.contingut-nosaltres p {
+    padding: var(--txt-padding);
+    text-align: justify;
+    align-content: center;
+    border: 1px solid;
+}
+.contingut-nosaltres:nth-child(1) {
+    margin-bottom: var(--marg-inf);
+}
+.contingut-nosaltres:nth-child(even) {
+  flex-direction: row-reverse;
+}
+/* =========================================================
+   CARTA
+   ========================================================= */
+.contenidor-carta {
+    margin-left: var(--lateral);
+    margin-right: var(--lateral);
+}
+   .contenidor-carta article {
+    display: grid;
+    grid-template-columns: 0.3fr 1fr 1fr;
+    grid-template-rows: 4rem auto auto 4rem 4rem;
+    grid-template-areas:"el0 el0 el0"
+                        "el1 el2 el2"
+                        "el1 el2 el2" 
+                        "el1 el3 el4"
+                        "el1 el3 el4";
+    margin-bottom: 2%;
+    gap: 5px;
+}
+@media (max-width: 900px) {
+    /* SOBRE NOSALTRES */
+    .contingut-nosaltres {
+        flex-direction: column;
+    }
+    .contingut-nosaltres img {
+    width: 100%;
+    }
+    .contingut-nosaltres:nth-child(even) {
+        flex-direction: column;
+    }
+    /* CARTA */
+    .contenidor-carta article {
+        grid-template-columns: 0.3fr 1fr;
+        grid-template-rows: 4rem auto auto 4rem 4rem 4rem 4rem;
+        grid-template-areas:
+                        "el0 el0"
+                        "el1 el2"
+                        "el1 el2" 
+                        "el1 el3"
+                        "el1 el3"
+                        "el1 el4"
+                        "el1 el4";
+    }
+}
+.contenidor-carta article:nth-child(2) {
+    margin-bottom: 2%;
+}
+.titol-carta {
+    grid-area: el0;  
+    margin-bottom: 2%; 
+    border-radius: var(--b-radius);
+}
+.nom-menu { 
+    grid-area: el1;
+    padding: var(--txt-padding);
+}
+.txt-carta { 
+    grid-area: el2; 
+    margin-bottom: 2%;
+    padding: var(--txt-padding);
+    text-align: justify;
+}
+.img-carta1 { 
+    grid-area: el3; 
+    border: 1px solid;
+}
+.img-carta2 { 
+    grid-area: el4; 
+    border: 1px solid;
+}
+.img-carta1, .img-carta2 {
+    display: flex;
+}
+
+.nom-menu, .titol-carta {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    border: 1px solid; 
+}
+/* =========================================================
+   MEDIA QUERIES
+   ========================================================= */

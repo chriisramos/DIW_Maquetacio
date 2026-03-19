@@ -24,6 +24,7 @@ section {
 img {
     width: 100%;
     display: block;
+    border-radius: var(--b-radius);
 }
 @media (max-width: 900px) {
 :root { /* VARIABLES */
@@ -75,7 +76,11 @@ img {
     padding: 0.4rem;
     border-radius: var(--b-radius);
     border: 3px solid;
-    z-index: 2;
+    text-decoration: none;
+    color: black;
+}
+.boton-reservar:hover {
+      opacity: 0.5;
 }
 @media (max-width: 900px) {
 .boton-reservar {
@@ -93,6 +98,7 @@ img {
 }
 .hero img {
     max-height: 96vh;
+    border-radius: 0;
 }
 
 .hero-text {
@@ -170,7 +176,7 @@ img {
    .contenidor-carta article {
     display: grid;
     grid-template-columns: 0.3fr 1fr 1fr;
-    grid-template-rows: 4rem auto auto 4rem 4rem auto auto 4rem 4rem;
+    grid-template-rows: 4rem auto;
     grid-template-areas:"el0 el0 el0"
                         /* Primer menu*/
                         "el1 el2 el2"
@@ -195,6 +201,8 @@ img {
     grid-area: el0;  
     margin-bottom: 2%; 
     border-radius: var(--b-radius);
+    font-weight: bold;
+    font-size: 1.3rem;
 }
 
 /* Nombres de cada menu (MENU 1, MENU 2) */
@@ -222,7 +230,21 @@ img {
 
 .img-carta1, .img-carta2, .img-carta3, .img-carta4 {
     display: flex;
-    border: 1px solid;
+    position: relative;
+}
+.overlay-img-carta {
+    position: absolute;
+    bottom: 0;
+    padding: 1.2rem;
+    width: 100%;
+    text-align: center;
+    background-color: black;
+    transition: .5s ease;
+    color: white;
+    opacity: 0;
+}
+.overlay-img-carta:hover {
+  opacity: 0.5;
 }
 
 .nom-menu, .nom-menu2, .titol-carta {
@@ -234,7 +256,7 @@ img {
 @media (max-width: 900px) {
     .contenidor-carta article {
         grid-template-columns: 0.3fr 1fr;
-        grid-template-rows: 4rem auto auto 4rem 4rem 4rem auto auto 4rem 4rem;
+        grid-template-rows: 4rem auto;
             
         grid-template-areas:
             "el0 el0"
@@ -257,5 +279,81 @@ img {
     }
 }
 /* =========================================================
-   MEDIA QUERIES
+   GALERIA DE FOTOS
    ========================================================= */
+.contenidor-galeria {
+    display: flex;
+    margin-left: var(--lateral);
+    margin-right: var(--lateral);
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.contenidor-galeria div{
+    display: flex;
+    max-width: 250px;
+}
+.contenidor-galeria div img{
+    max-width: 100%;
+    border: 1px solid #ddd;
+    padding: 0.3rem;
+    border-radius: 4px;
+}
+.contenidor-galeria div img:hover{
+    opacity: 0.4;
+    border-style: outset;
+    border: 3px solid rgb(21, 134, 134);
+    transition: .3s ease;
+}
+.contenidor-galeria div:nth-child(4n + 1), .contenidor-galeria div:nth-child(4n + 4){
+    opacity: 0.5;
+}
+
+/* =========================================================
+   FORMULARIO
+   ========================================================= */
+.formulari {
+    margin-left: var(--lateral);
+    margin-right: var(--lateral);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "f1 f2"
+    "f3 f4"
+    "f5 f5"
+    "f6 f6";
+    border: 1px solid;
+    border-radius: var(--b-radius);
+    gap: 1rem;
+    padding: 1rem;
+}
+.el-formulari {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.el-formulari input {
+    min-width: none;
+}
+.el-formulari:nth-child(1) { grid-area: f1;}
+.el-formulari:nth-child(2) { grid-area: f2;}
+.el-formulari:nth-child(3) { grid-area: f3;}
+.el-formulari:nth-child(4) { grid-area: f4;}
+.el-formulari:nth-child(5) { grid-area: f5;}
+.el-formulari:nth-child(6) { grid-area: f6;  justify-self: end; width: auto;}
+@media (max-width: 900px) {
+    .formulari {
+            grid-template-columns: 1fr;
+            grid-template-areas: 
+    "f1"
+    "f2"
+    "f3"
+    "f4"
+    "f5"
+    "f6"
+    ;
+    }
+    .el-formulari:nth-child(6) { width: 100%;}
+}

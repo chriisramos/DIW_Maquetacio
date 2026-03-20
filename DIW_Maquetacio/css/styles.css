@@ -1,11 +1,12 @@
 /* =========================================================
-   CONFIGURACIONES GLOBALES
+   CONFIGURACIONS GLOBALS
    ========================================================= */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* Inclou el padding i el border en l'amplada total de l'element */
     margin: 0;
+    max-width: 100%; /* Evita que qualsevol element desbordí horitzontalment */
 }
-:root { /* VARIABLES */
+:root { /* Variables */
     --marg-inf: 2.5rem;
     --b-radius: 15px;
     --lateral: 15%;
@@ -13,52 +14,57 @@
     --txt-padding: 1rem;
 }
 section {
-    margin-bottom: var(--marg-inf);
+    margin-bottom: var(--marg-inf); /* Separació uniforme entre seccions */
 }
-.titol-seccio { /* ESTIL PER ALS TITOLS DELS APARTATS */
+.titol-seccio { /* Estil per als títols dels apartats */
     display: flex;
-    margin-left: var(--lateral-titols) ;
+    margin-left: var(--lateral-titols);
     margin-bottom: var(--marg-inf);
     font-size: 1.2rem;
 }
 img {
-    width: 100%;
-    display: block;
+    width: 100%; /* Les imatges ocupen tota l'amplada del seu contenidor */
+    display: block; /* Elimina l'espai inferior que genera inline per defecte */
     border-radius: var(--b-radius);
 }
+body {
+    background-color: white;
+}
 @media (max-width: 900px) {
-:root { /* VARIABLES */
-
+:root { /* Variables */
     --lateral: 18%;
-    --lateral-titols: 20%;
-
+}
+.titol-seccio { /* Estil per als títols dels apartats */
+    font-size: 1rem;
+    justify-content: center;
+    margin-left: 0;
 }
 }
 /* =========================================================
    MENU PRINCIPAL
    ========================================================= */
 .menu-principal {
-    position: sticky;
+    position: sticky; /* El menú es queda fix a la part superior en fer scroll */
     top: 0;
-    z-index: 1;
+    z-index: 1; /* Es superposa sobre la resta del contingut */
 }
-
+ 
 .menu-principal ul {
-    display: flex;
+    display: flex; /* Col·loca els elements del menú en fila */
     background-color: white;
-    list-style: none;
-    gap: 1rem;
-    justify-content: end;
-    padding: 0.5rem 0.2rem;
+    list-style: none; /* Elimina els punts de la llista */
+    gap: 0.5rem;
+    justify-content: end; /* Alinea els elements a la dreta */
+    padding: 0.5rem 0.9rem;
 }
 .menu-principal li {
     font-size: 1.2rem;
 }
 .menu-principal li:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Subratllat en passar el ratolí */
 }
 .menu-principal li a {
-  color: inherit;
+  color: inherit; /* Hereta el color del li pare */
   text-decoration: none;
 }
 @media (max-width: 900px) {
@@ -67,50 +73,51 @@ img {
 }
 }
 /* =========================================================
-   BOTÓN RESERVAR
+   BOTÓ RESERVAR
    ========================================================= */
 .boton-reservar {
-    position: fixed;
-    bottom: 20px;
+    position: fixed; /* Sempre visible a la cantonada inferior dreta */
+    bottom: 55px;
     right: 20px;
     padding: 0.4rem;
     border-radius: var(--b-radius);
     border: 3px solid;
     text-decoration: none;
     color: black;
+    z-index: 1; /* Es superposa sobre la resta del contingut */
 }
 .boton-reservar:hover {
       opacity: 0.5;
 }
 @media (max-width: 900px) {
 .boton-reservar {
-    bottom: 10px;
-    right: 10px;   
+    right: 8px;
+    font-size: 0.8rem;
 }
 }
 /* =========================================================
-   HERO / CABECERA
+   HERO / CAPÇELERA
    ========================================================= */
 .hero {
     display: flex;
-    align-items: center;
-    position: relative;
+    align-items: center; /* Centra verticalment el contingut */
+    position: relative; /* Permet posicionar el text per sobre de la imatge */
 }
 .hero img {
-    max-height: 96vh;
-    border-radius: 0;
+    object-fit: cover; /* La imatge cobreix tot l'espai sense deformar-se */
+    border-radius: 0; /* Sobreescriu el border-radius global per a la imatge hero */
 }
-
 .hero-text {
-    position: absolute;
+    position: absolute; /* Superposa el text sobre la imatge */
     left: 4rem;
-    max-width: 50%;
+    max-width: 50%; /* Limita l'amplada del text perquè no tapi tota la imatge */
 }
 .hero-text h1 {
     font-size: 3rem;
 }
 .hero-text p {
     font-size: 1.2rem;
+    margin-top: 1rem; /* Separació entre el títol i el paràgraf */
 }
 @media (max-width: 900px) {
     .hero-text {
@@ -123,24 +130,24 @@ img {
     font-size: 1rem;
     }
 }
-
+ 
+ 
 /* =========================================================
-   SOBRE NOSOTROS
+   SOBRE NOSALTRES
    ========================================================= */
-.contenidor-nosaltres {
+.contenidor-nosaltres { /* Contenidor principal de la secció "Sobre nosaltres" */
     margin-left: var(--lateral);
     margin-right: var(--lateral); 
 }
-.contingut-nosaltres {
+.contingut-nosaltres { /* Bloc de cada fila imatge + text */
     display: flex;
     gap: 3rem;
     width: 100%;
     justify-content: center;
     align-content: center;
-    
 }
 .contingut-nosaltres img {
-    width: calc(30% - 3rem);
+    width: calc(30% - 3rem); /* La imatge ocupa un 30% del bloc descomptant el gap */
 }
 .contingut-nosaltres p {
     padding: var(--txt-padding);
@@ -149,15 +156,15 @@ img {
     border: 1px solid;
 }
 .contingut-nosaltres:nth-child(1) {
-    margin-bottom: var(--marg-inf);
+    margin-bottom: var(--marg-inf); /* Separació entre els dos blocs */
 }
 .contingut-nosaltres:nth-child(even) {
-  flex-direction: row-reverse;
+  flex-direction: row-reverse; /* El segon bloc inverteix l'ordre imatge/text */
 }
 @media (max-width: 900px) {
-    /* SOBRE NOSALTRES */
+    /* Sobre nosaltres */
     .contingut-nosaltres {
-        flex-direction: column;
+        flex-direction: column; /* En mòbil imatge i text s'apilen verticalment */
     }
     .contingut-nosaltres img {
     width: 100%;
@@ -169,21 +176,21 @@ img {
 /* =========================================================
    CARTA
    ========================================================= */
-.contenidor-carta {
+.contenidor-carta { /* Contenidor principal de la secció carta */
     margin-left: var(--lateral);
     margin-right: var(--lateral);
 }
-   .contenidor-carta article {
+.contenidor-carta article { /* Grid que agrupa tots els elements del menú */
     display: grid;
     grid-template-columns: 0.3fr 1fr 1fr;
     grid-template-rows: 4rem auto;
     grid-template-areas:"el0 el0 el0"
-                        /* Primer menu*/
+                        /* Primer menú */
                         "el1 el2 el2"
                         "el1 el2 el2" 
                         "el1 el3 el4"
                         "el1 el3 el4"
-                        /* Segundo menu*/
+                        /* Segon menú */
                         "el5 el6 el6"
                         "el5 el6 el6"
                         "el5 el7 el8"
@@ -192,11 +199,10 @@ img {
     margin-bottom: 2%;
     gap: 5px;
 }
-
 .contenidor-carta article:nth-child(2) {
     margin-bottom: 2%;
 }
-/* Titulo de la carta (MENU) */
+/* Títol de la carta (menú) */
 .titol-carta {
     grid-area: el0;  
     margin-bottom: 2%; 
@@ -204,49 +210,43 @@ img {
     font-weight: bold;
     font-size: 1.3rem;
 }
-
-/* Nombres de cada menu (MENU 1, MENU 2) */
+/* Noms de cada menú (menú 1, menú 2) */
 .nom-menu  { grid-area: el1; }
 .nom-menu2 { grid-area: el5; }
 .nom-menu, .nom-menu2 {
     padding: var(--txt-padding);
 }
-
-/* Text de los menus (Contingut + lorem) */
+/* Text dels menús (contingut + lorem) */
 .txt-carta  { grid-area: el2; }
 .txt-carta2 { grid-area: el6; }
-
 .txt-carta, .txt-carta2 {
     margin-bottom: 2%;
     padding: var(--txt-padding);
     text-align: justify;
 }
-
-/* Imagenes carta */
+/* Imatges carta */
 .img-carta1 { grid-area: el3; }
 .img-carta2 { grid-area: el4; }
 .img-carta3 { grid-area: el7; }
 .img-carta4 { grid-area: el8; }
-
 .img-carta1, .img-carta2, .img-carta3, .img-carta4 {
     display: flex;
-    position: relative;
+    position: relative; /* Necessari per posicionar l'overlay dins */
 }
-.overlay-img-carta {
+.overlay-img-carta { /* Capa de text que apareix sobre la imatge en fer hover */
     position: absolute;
-    bottom: 0;
+    bottom: 0; /* Es posiciona a la part inferior de la imatge */
     padding: 1.2rem;
     width: 100%;
     text-align: center;
     background-color: black;
-    transition: .5s ease;
+    transition: .5s ease; /* Transició suau d'aparició/desaparició */
     color: white;
-    opacity: 0;
+    opacity: 0; /* Ocult per defecte */
 }
-.overlay-img-carta:hover {
+.img-carta:hover .overlay-img-carta { /* Mostra l'overlay en passar el ratolí per la imatge */
   opacity: 0.5;
 }
-
 .nom-menu, .nom-menu2, .titol-carta {
     display: flex;
     align-items: center;
@@ -254,22 +254,19 @@ img {
     border: 1px solid; 
 }
 @media (max-width: 900px) {
-    .contenidor-carta article {
+    .contenidor-carta article { /* En mòbil s'elimina la columna d'imatges lateral */
         grid-template-columns: 0.3fr 1fr;
         grid-template-rows: 4rem auto;
-            
         grid-template-areas:
             "el0 el0"
-
-            /* MENU 1 */
+            /* Menú 1 */
             "el1 el2"
             "el1 el2" 
             "el1 el3"
             "el1 el3"
             "el1 el4"
             "el1 el4"
-
-            /* MENU 2 */
+            /* Menú 2 */
             "el5 el6"
             "el5 el6"
             "el5 el7"
@@ -279,42 +276,42 @@ img {
     }
 }
 /* =========================================================
-   GALERIA DE FOTOS
+   GALERIA
    ========================================================= */
-.contenidor-galeria {
+.contenidor-galeria { /* Contenidor flex que distribueix les imatges en files automàticament */
     display: flex;
     margin-left: var(--lateral);
     margin-right: var(--lateral);
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Les imatges salten a la fila següent si no hi caben */
     gap: 1rem;
     justify-items: center;
     justify-content: center;
     align-content: center;
 }
-.contenidor-galeria div{
+.contenidor-galeria div { /* Cada cel·la de la galeria */
     display: flex;
     max-width: 250px;
 }
-.contenidor-galeria div img{
+.contenidor-galeria div img {
     max-width: 100%;
-    border: 1px solid #ddd;
+    border: 1px solid #ddd; /* Vora per defecte de cada imatge */
     padding: 0.3rem;
     border-radius: 4px;
+    transition: .3s ease; /* Transició suau per al hover */
 }
-.contenidor-galeria div img:hover{
-    opacity: 0.4;
+.contenidor-galeria div img:hover {
+    opacity: 0.5; /* Imatge més fosca en fer hover */
     border-style: outset;
-    border: 3px solid rgb(21, 134, 134);
-    transition: .3s ease;
+    border: 3px solid rgb(21, 134, 134); /* Vora destacada en fer hover */
 }
-.contenidor-galeria div:nth-child(4n + 1), .contenidor-galeria div:nth-child(4n + 4){
+.contenidor-galeria div:nth-child(4n + 1) img, 
+.contenidor-galeria div:nth-child(4n + 4) img { /* Imatges 1, 4, 5 i 8 més fosques per defecte */
     opacity: 0.5;
 }
-
 /* =========================================================
-   FORMULARIO
+   FORMULARI
    ========================================================= */
-.formulari {
+.formulari { /* Grid de dues columnes per als camps del formulari */
     margin-left: var(--lateral);
     margin-right: var(--lateral);
     display: grid;
@@ -322,38 +319,63 @@ img {
     grid-template-areas: 
     "f1 f2"
     "f3 f4"
-    "f5 f5"
-    "f6 f6";
+    "f5 f5" /* El textarea ocupa les dues columnes */
+    "f6 f6"; /* El botó ocupa les dues columnes */
     border: 1px solid;
     border-radius: var(--b-radius);
     gap: 1rem;
     padding: 1rem;
 }
-.el-formulari {
+.el-formulari { /* Cada camp del formulari amb la seva etiqueta */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Etiqueta per sobre de l'input */
     flex-grow: 1;
 }
 .el-formulari input {
     min-width: none;
+}
+.el-formulari button {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
 }
 .el-formulari:nth-child(1) { grid-area: f1;}
 .el-formulari:nth-child(2) { grid-area: f2;}
 .el-formulari:nth-child(3) { grid-area: f3;}
 .el-formulari:nth-child(4) { grid-area: f4;}
 .el-formulari:nth-child(5) { grid-area: f5;}
-.el-formulari:nth-child(6) { grid-area: f6;  justify-self: end; width: auto;}
+.el-formulari:nth-child(6) { grid-area: f6; justify-self: end; width: auto;} /* Botó alineat a la dreta */
 @media (max-width: 900px) {
-    .formulari {
-            grid-template-columns: 1fr;
-            grid-template-areas: 
-    "f1"
-    "f2"
-    "f3"
-    "f4"
-    "f5"
-    "f6"
-    ;
+    .formulari { /* En mòbil tots els camps ocupen l'amplada completa */
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "f1"
+        "f2"
+        "f3"
+        "f4"
+        "f5"
+        "f6";
     }
-    .el-formulari:nth-child(6) { width: 100%;}
+    .el-formulari:nth-child(6) { width: 100%;} /* El botó ocupa tota l'amplada en mòbil */
+}
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer { /* Barra inferior amb contacte i imatge de logo */
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    border: 1px solid;
+    flex-wrap: wrap;
+}
+footer div { /* Cada bloc del footer (email, telèfon, logo) */
+    display: flex;
+    align-items: center; /* Icona i text alineats verticalment */
+    gap: 0.5rem;
+}
+footer img {
+    height: 30px;
+    width: auto; /* Manté les proporcions del logo */
+}
+footer div:nth-child(3) { /* El logotip es col·loca a la dreta seguint el wireframe de referència, tot i que l'enunciat indica esquerra per error. */
+  margin-left: auto; /* Empeny el logo cap a la dreta */
 }
